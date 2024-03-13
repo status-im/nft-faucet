@@ -11,5 +11,6 @@ public class OptimismNetworkPlugin : INetworkPlugin
         new OptimismMainnetNetwork(),
         new OptimismKovanNetwork(),
         new OptimismGoerliNetwork(),
+        new OptimismSepoliaNetwork(),
     };
 }
