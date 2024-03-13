@@ -14,6 +14,7 @@ public sealed class OptimismGoerliNetwork : Network
     public override string SmallestCurrency { get; } = "wei";
     public override string ImageName { get; } = "optimism-black.svg";
     public override bool IsSupported { get; } = false;
+    public override bool IsDeprecated { get; } = true;
     public override NetworkType Type { get; } = NetworkType.Ethereum;
     public override NetworkSubtype SubType { get; } = NetworkSubtype.Optimism;
     public override Uri PublicRpcUrl { get; } = null;

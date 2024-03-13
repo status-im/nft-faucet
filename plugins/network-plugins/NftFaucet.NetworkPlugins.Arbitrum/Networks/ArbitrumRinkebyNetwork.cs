@@ -16,6 +16,7 @@ public sealed class ArbitrumRinkebyNetwork : Network
     public override string MainCurrency { get; } = "ETH";
     public override string SmallestCurrency { get; } = "wei";
     public override string ImageName { get; } = "arbitrum-black.svg";
+    public override bool IsDeprecated { get; } = true;
     public override NetworkType Type { get; } = NetworkType.Ethereum;
     public override NetworkSubtype SubType { get; } = NetworkSubtype.Arbitrum;
     public override Uri PublicRpcUrl { get; } = new Uri("https://rinkeby.arbitrum.io/rpc");

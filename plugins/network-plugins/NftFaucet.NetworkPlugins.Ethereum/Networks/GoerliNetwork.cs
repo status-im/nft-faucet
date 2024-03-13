@@ -16,6 +16,7 @@ public sealed class GoerliNetwork : Network
     public override string MainCurrency { get; } = "ETH";
     public override string SmallestCurrency { get; } = "wei";
     public override string ImageName { get; } = "ethereum-gray.svg";
+    public override bool IsDeprecated { get; } = true;
     public override NetworkType Type { get; } = NetworkType.Ethereum;
     public override NetworkSubtype SubType { get; } = NetworkSubtype.Ethereum;
     public override Uri PublicRpcUrl { get; } = new Uri("https://ethereum-goerli-rpc.allthatnode.com");
