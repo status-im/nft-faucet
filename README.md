@@ -4,7 +4,7 @@
 It's a WASM web-application that allows you to mint ERC-721 and ERC-1155 tokens to any specified address from supported networks.
 
 ## Demo
-Go to https://darkcodi.github.io/nft-faucet/
+Go to https://status-im.github.io/nft-faucet
 
 [![demo](demo2.gif)]()
 
