@@ -14,7 +14,7 @@ public class TokenMetadataGenerator : ITokenMetadataGenerator
             Description = token.Description,
             Image = coverFileLocation != null ? coverFileLocation.OriginalString : mainFileLocation.OriginalString,
             AnimationUrl = coverFileLocation != null ? mainFileLocation.OriginalString : null,
-            ExternalUrl = "https://darkcodi.github.io/nft-faucet/",
+            ExternalUrl = "https://status-im.github.io/nft-faucet/",
         };
         var metadataJson = JsonConvert.SerializeObject(tokenMetadata, Formatting.Indented);
         return metadataJson;

@@ -1,5 +1,5 @@
 # NFT Faucet
-[![Deploy to GitHub Pages](https://github.com/darkcodi/nft-faucet/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/darkcodi/nft-faucet/actions/workflows/main.yml)
+[![Deploy to GitHub Pages](https://github.com/status-im/nft-faucet/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/status-im/nft-faucet/actions/workflows/main.yml)
 
 It's a WASM web-application that allows you to mint ERC-721 and ERC-1155 tokens to any specified address from supported networks.
 
