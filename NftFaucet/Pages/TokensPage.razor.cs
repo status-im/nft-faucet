@@ -82,6 +82,27 @@ public partial class TokensPage : BasicComponent
         await SaveAppState();
     }
 
+    private async Task OpenImportTokenDialog()
+    {
+        var token = (IToken) await DialogService.OpenAsync<ImportTokenDialog>("Import token",
+            new Dictionary<string, object>(),
+            new DialogOptions() { Width = "1000px", Height = "700px", Resizable = true, Draggable = true });
+ 
+        if (token == null)
+        {
+            return;
+        }
+
+        AppState.UserStorage.Tokens ??= new List<IToken>();
+        AppState.UserStorage.Tokens.Add(token);
+        AppState.UserStorage.SelectedTokens = new[] { token.Id };
+        AppState.UserStorage.SelectedUploadLocations = Array.Empty<Guid>();
+        RefreshCards();
+        RefreshMediator.NotifyStateHasChangedSafe();
+        await StateRepository.SaveToken(token);
+        await SaveAppState();
+    }
+
     private async Task OnTokenChange()
     {
         AppState.UserStorage.SelectedUploadLocations = Array.Empty<Guid>();

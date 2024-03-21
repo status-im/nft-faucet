@@ -9,4 +9,5 @@ public class PluginStateStorage
     public ICollection<IWallet> Wallets { get; set; }
     public ICollection<IUploader> Uploaders { get; set; }
     public ICollection<IContract> Contracts { get; set; }
+    public ICollection<IImporter> Importers { get; set; }
 }

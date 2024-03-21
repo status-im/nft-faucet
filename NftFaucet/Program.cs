@@ -114,6 +114,21 @@ builder.Services.AddIndexedDB(dbStore =>
 });
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<IndexedDBManager>();
+    await db.AddNewStore(new StoreSchema
+    {
+        Name = "ImporterStates",
+        PrimaryKey = new IndexSpec { Name = "id", KeyPath = "id", Auto = true },
+        Indexes = new List<IndexSpec>
+        {
+            new IndexSpec {Name = "state", KeyPath = "state", Auto = false},
+        }
+    });
+}
+
 var initializationService = app.Services.GetRequiredService<IInitializationService>();
 await initializationService.Initialize();
 await app.RunAsync();

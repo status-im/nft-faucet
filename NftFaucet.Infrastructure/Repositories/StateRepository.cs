@@ -16,6 +16,7 @@ public class StateRepository : IStateRepository
     private const string UploadLocationsStoreName = "UploadLocations";
     private const string WalletStatesStoreName = "WalletStates";
     private const string UploaderStatesStoreName = "UploaderStates";
+    private const string ImporterStatesStoreName = "ImporterStates";
 
     public StateRepository(IndexedDBManager dbManager, Mapper mapper)
     {
@@ -157,6 +158,40 @@ public class StateRepository : IStateRepository
         };
 
         var existingStateDto = await _dbManager.GetRecordById<Guid, UploaderStateDto>(UploaderStatesStoreName, stateDto.Id);
+        if (existingStateDto == null)
+        {
+            await _dbManager.AddRecord(record);
+        }
+        else
+        {
+            await _dbManager.UpdateRecord(record);
+        }
+    }
+
+    public async Task<ImporterStateDto[]> LoadImporterStates()
+    {
+        var existingImporterStates = await _dbManager.GetRecords<ImporterStateDto>(ImporterStatesStoreName);
+        if (existingImporterStates == null || existingImporterStates.Count == 0)
+            return Array.Empty<ImporterStateDto>();
+
+        return existingImporterStates.ToArray();
+    }
+    
+    public async Task SaveImporterState(IImporter importer)
+    {
+        var state = await importer.GetState();
+        var stateDto = new ImporterStateDto
+        {
+            Id = importer.Id,
+            State = state,
+        };
+        var record = new StoreRecord<ImporterStateDto>
+        {
+            Storename = ImporterStatesStoreName,
+            Data = stateDto,
+        };
+
+        var existingStateDto = await _dbManager.GetRecordById<Guid, ImporterStateDto>(ImporterStatesStoreName, stateDto.Id);
         if (existingStateDto == null)
         {
             await _dbManager.AddRecord(record);

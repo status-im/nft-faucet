@@ -8,4 +8,6 @@ public interface IToken
     public DateTime CreatedAt { get; }
     public ITokenMedia MainFile { get; }
     public ITokenMedia CoverFile { get; }
+    public Guid? ImporterId { get; set; }
+    public string Location { get; }
 }
