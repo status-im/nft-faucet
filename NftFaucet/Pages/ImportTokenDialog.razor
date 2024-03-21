@@ -1,0 +1,26 @@
+@page "/tokens/import"
+@inherits BasicComponent
+
+<PageTitle>Import new token</PageTitle>
+<RadzenContent Container="main">
+    <h3>Select importer</h3>
+    <CardList Data="@ImporterCards" @bind-SelectedItems="@SelectedImporterIds"/>
+    <div class="mb-4">
+        <RadzenText TextStyle="TextStyle.H6" Style="display: inline;">ChainID</RadzenText><text style="color: red"> *</text>
+        <RadzenDropDown TextProperty="Name" ValueProperty="ChainId" Data="@SupportedNetworks" @bind-Value="@Model.ChainId" Class="w-100"/>
+    </div>
+    <div class="mb-4">
+        <RadzenText TextStyle="TextStyle.H6" Style="display: inline;">Contract Address</RadzenText><text style="color: red"> *</text>
+        <RadzenTextBox Placeholder="0x06012c8cf97BEaD5deAe237070F9587f8E7A266d" MaxLength="42" @bind-Value="@Model.ContractAddress" Class="w-100"/>
+    </div>
+    <div class="mb-4">
+        <RadzenText TextStyle="TextStyle.H6" Style="display: inline;">TokenID</RadzenText><text style="color: red"> *</text>
+        <RadzenTextBox Placeholder="0" MaxLength="78" @bind-Value="@Model.TokenId" Class="w-100"/>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-right">
+            <RadzenButton Text="Cancel" Click="@(args => DialogService.Close())" ButtonStyle="ButtonStyle.Secondary" Disabled="IsImporting" Style="width: 120px" Class="mr-1"/>
+            <RadzenButton Text="Import" Icon="eject" BusyText="Importing..." IsBusy=@IsImporting Click="@(async args => await OnImportPressed())" Disabled="@(SelectedImporter == null || !SelectedImporter.IsConfigured)" Style="width: 180px"/>
+        </div>
+    </div>
+</RadzenContent>

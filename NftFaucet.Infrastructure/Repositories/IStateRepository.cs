@@ -12,12 +12,14 @@ public interface IStateRepository
     public Task SaveUploadLocation(ITokenUploadLocation uploadLocation);
     public Task SaveWalletState(IWallet wallet);
     public Task SaveUploaderState(IUploader uploader);
+    public Task SaveImporterState(IImporter importer);
 
     public Task LoadAppState(ScopedAppState appState);
     public Task<IToken[]> LoadTokens();
     public Task<ITokenUploadLocation[]> LoadUploadLocations();
     public Task<UploaderStateDto[]> LoadUploaderStates();
     public Task<WalletStateDto[]> LoadWalletStates();
+    public Task<ImporterStateDto[]> LoadImporterStates();
 
     public Task DeleteTokenLocation(Guid uploadLocationId);
     public Task DeleteToken(Guid tokenId);

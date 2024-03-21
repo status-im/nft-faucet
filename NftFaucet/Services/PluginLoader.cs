@@ -1,3 +1,4 @@
+using NftFaucet.ImportPlugins.OpenSea;
 using NftFaucet.NetworkPlugins.Arbitrum;
 using NftFaucet.NetworkPlugins.Avalanche;
 using NftFaucet.NetworkPlugins.BinanceSmartChain;
@@ -42,5 +43,10 @@ public class PluginLoader
         new InfuraUploaderPlugin(),
         new NftStorageUploaderPlugin(),
         new CrustUploaderPlugin(),
+    };
+
+    public IReadOnlyCollection<IImporterPlugin> ImporterPlugins { get; } = new IImporterPlugin[]
+    {
+        new OpenSeaImporterPlugin(),
     };
 }

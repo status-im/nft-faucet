@@ -40,12 +40,14 @@ public class InitializationService : IInitializationService
         var isFirstRun = _appState.PluginStorage.Networks == null &&
                          _appState.PluginStorage.Wallets == null &&
                          _appState.PluginStorage.Uploaders == null &&
-                         _appState.PluginStorage.Contracts == null;
+                         _appState.PluginStorage.Contracts == null &&
+                         _appState.PluginStorage.Importers == null;
 
         _appState.PluginStorage.Networks ??= _pluginLoader.NetworkPlugins.SelectMany(x => x.Networks).Where(x => x != null).ToArray();
         _appState.PluginStorage.Wallets ??= _pluginLoader.WalletPlugins.SelectMany(x => x.Wallets).Where(x => x != null).ToArray();
         _appState.PluginStorage.Uploaders ??= _pluginLoader.UploaderPlugins.SelectMany(x => x.Uploaders).Where(x => x != null).ToArray();
         _appState.PluginStorage.Contracts ??= _appState.PluginStorage.Networks.SelectMany(x => x.DeployedContracts).Where(x => x != null).ToArray();
+        _appState.PluginStorage.Importers ??= _pluginLoader.ImporterPlugins.SelectMany(x => x.Importers).Where(x => x != null).ToArray();
 
         if (isFirstRun)
         {
@@ -78,6 +80,16 @@ public class InitializationService : IInitializationService
             }
             await uploader.SetState(uploaderState.State);
         }
+        var importerStates = await _stateRepository.LoadImporterStates();
+        foreach (var importerState in importerStates)
+        {
+            var importer = _appState.PluginStorage.Importers.FirstOrDefault(x => x.Id == importerState.Id);
+            if (importer == null)
+            {
+                continue;
+            }
+            await importer.SetState(importerState.State);
+        }
     }
 
     private void ValidatePluginsData()
@@ -86,6 +98,7 @@ public class InitializationService : IInitializationService
         var walletIds = _appState.PluginStorage.Wallets.Select(x => x.Id).ToArray();
         var uploaderIds = _appState.PluginStorage.Uploaders.Select(x => x.Id).ToArray();
         var contractIds = _appState.PluginStorage.Contracts.Select(x => x.Id).ToArray();
+        var importerIds = _appState.PluginStorage.Importers.Select(x => x.Id).ToArray();
 
         var networkIdDuplicates = networkIds.Duplicates().ToArray();
         if (networkIdDuplicates.Any())
@@ -111,7 +124,13 @@ public class InitializationService : IInitializationService
             throw new ApplicationException($"[{nameof(ValidatePluginsData)}] There are contracts with same ids: {string.Join(", ", contractIdDuplicates)}");
         }
 
-        var allIds = networkIds.Concat(walletIds).Concat(uploaderIds).Concat(contractIds).ToArray();
+        var importerIdDuplicates = importerIds.Duplicates().ToArray();
+        if (importerIdDuplicates.Any())
+        {
+            throw new ApplicationException($"[{nameof(ValidatePluginsData)}] There are importers with same ids: {string.Join(", ", importerIdDuplicates)}");
+        }
+
+        var allIds = networkIds.Concat(walletIds).Concat(uploaderIds).Concat(contractIds).Concat(importerIds).ToArray();
         var allIdDuplicates = allIds.Duplicates().ToArray();
         if (allIdDuplicates.Any())
         {
@@ -152,5 +171,13 @@ public class InitializationService : IInitializationService
         {
             throw new ApplicationException($"[{nameof(ValidatePluginsData)}] There are contracts with same deployment datetime: {string.Join(", ", txDeploymentDateDuplicates)}");
         }
+
+        var importerShortNames = _appState.PluginStorage.Importers.Select(x => x.ShortName).Where(x => x != null).ToArray();
+        var importerShortNameDuplicates = importerShortNames.Duplicates().ToArray();
+        if (importerShortNameDuplicates.Any())
+        {
+            throw new ApplicationException($"[{nameof(ValidatePluginsData)}] There are importers with same short name: {string.Join(", ", importerShortNameDuplicates)}");
+        }
+
     }
 }

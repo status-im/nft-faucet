@@ -38,6 +38,7 @@
       <ProjectReference Include="..\plugins\upload-plugins\NftFaucet.UploadPlugins.Crust\NftFaucet.UploadPlugins.Crust.csproj" />
       <ProjectReference Include="..\plugins\upload-plugins\NftFaucet.UploadPlugins.Infura\NftFaucet.UploadPlugins.Infura.csproj" />
       <ProjectReference Include="..\plugins\upload-plugins\NftFaucet.UploadPlugins.NftStorage\NftFaucet.UploadPlugins.NftStorage.csproj" />
+      <ProjectReference Include="..\plugins\import-plugins\NftFaucet.ImportPlugins.OpenSea\NftFaucet.ImportPlugins.OpenSea.csproj" />
     </ItemGroup>
 
 </Project>

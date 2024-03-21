@@ -10,4 +10,6 @@ public class Token : IToken
     public DateTime CreatedAt { get; set; } = DateTime.Now;
     public ITokenMedia MainFile { get; set; }
     public ITokenMedia CoverFile { get; set; }
+    public Guid? ImporterId { get; set; }
+    public string Location { get; set; } = "";
 }
