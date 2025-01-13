@@ -28,6 +28,8 @@ Used [contracts](NftFaucet/Contracts) are based on [OpenZeppilin contracts](http
 | ArbitrumSepolia   | [0x1Fbaab49e7E3228B1F265CE894c5537434E7468b](https://sepolia.arbiscan.io/token/0x1fbaab49e7e3228b1f265ce894c5537434e7468b) | [0xa7DF1338aDE48bcDc4194929B9853a2F9516BF54](https://sepolia.arbiscan.io/token/0xa7df1338ade48bcdc4194929b9853a2f9516bf54) |
 | AvalancheFuji   | [0x9F64932Be34D5D897C4253D17707b50921f372B6](https://testnet.snowtrace.io/token/0x9F64932Be34D5D897C4253D17707b50921f372B6) | [0xf67C575502fc1cE399a3e1895dDf41847185D7bD](https://testnet.snowtrace.io/token/0xf67C575502fc1cE399a3e1895dDf41847185D7bD) |
 | BnbChainTestnet | [0xe6ee919a81da4dad1e632614ba4fdb8d748eb278](https://testnet.bscscan.com/token/0xe6ee919a81da4dad1e632614ba4fdb8d748eb278) | [0xa6d787d1ec987a96ba2a8bf4dae79234e4a2125a](https://testnet.bscscan.com/token/0xa6d787d1ec987a96ba2a8bf4dae79234e4a2125a) |
+| Base        | [0x1Fbaab49e7E3228B1F265CE894c5537434E7468b](https://basescan.org/token/0x1Fbaab49e7E3228B1F265CE894c5537434E7468b) | [0xfC43ac5f309499385e91e059862bDb0Bfa2Cd16c](https://basescan.org/token/0xfC43ac5f309499385e91e059862bDb0Bfa2Cd16c) |
+| BaseSepolia   | [0xa7DF1338aDE48bcDc4194929B9853a2F9516BF54](https://sepolia.basescan.org/token/0xa7DF1338aDE48bcDc4194929B9853a2F9516BF54) | [0x1Fbaab49e7E3228B1F265CE894c5537434E7468b](https://sepolia.basescan.org/token/0x1Fbaab49e7E3228B1F265CE894c5537434E7468b) |
 
 ## Technology stack
 
