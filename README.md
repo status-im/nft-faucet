@@ -30,6 +30,7 @@ Used [contracts](NftFaucet/Contracts) are based on [OpenZeppilin contracts](http
 | BnbChainTestnet | [0xe6ee919a81da4dad1e632614ba4fdb8d748eb278](https://testnet.bscscan.com/token/0xe6ee919a81da4dad1e632614ba4fdb8d748eb278) | [0xa6d787d1ec987a96ba2a8bf4dae79234e4a2125a](https://testnet.bscscan.com/token/0xa6d787d1ec987a96ba2a8bf4dae79234e4a2125a) |
 | Base        | [0x1Fbaab49e7E3228B1F265CE894c5537434E7468b](https://basescan.org/token/0x1Fbaab49e7E3228B1F265CE894c5537434E7468b) | [0xfC43ac5f309499385e91e059862bDb0Bfa2Cd16c](https://basescan.org/token/0xfC43ac5f309499385e91e059862bDb0Bfa2Cd16c) |
 | BaseSepolia   | [0xa7DF1338aDE48bcDc4194929B9853a2F9516BF54](https://sepolia.basescan.org/token/0xa7DF1338aDE48bcDc4194929B9853a2F9516BF54) | [0x1Fbaab49e7E3228B1F265CE894c5537434E7468b](https://sepolia.basescan.org/token/0x1Fbaab49e7E3228B1F265CE894c5537434E7468b) |
+| StatusNetworkSepolia   | [0x1Fbaab49e7E3228B1F265CE894c5537434E7468b](https://sepoliascan.status.network/address/0x1Fbaab49e7E3228B1F265CE894c5537434E7468b) | [0xfC43ac5f309499385e91e059862bDb0Bfa2Cd16c](https://sepoliascan.status.network/address/0xfC43ac5f309499385e91e059862bDb0Bfa2Cd16c) |
 
 ## Technology stack
 
