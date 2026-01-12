@@ -10,4 +10,7 @@ public enum NetworkSubtype
     Arbitrum,
     Avalanche,
     Solana,
+    Base,
+    StatusNetwork,
+    Linea,
 }

@@ -13,7 +13,7 @@ public sealed class SepoliaNetwork : Network
     public override string ShortName { get; } = "Sepolia";
     public override ulong? ChainId { get; } = 11155111;
     public override int? Order { get; } = 7;
-    public override string MainCurrency { get; } = "SEP";
+    public override string MainCurrency { get; } = "ETH";
     public override string SmallestCurrency { get; } = "wei";
     public override string ImageName { get; } = "ethereum-gray.svg";
     public override NetworkType Type { get; } = NetworkType.Ethereum;

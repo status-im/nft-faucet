@@ -7,6 +7,9 @@ using NftFaucet.NetworkPlugins.Moonbeam;
 using NftFaucet.NetworkPlugins.Optimism;
 using NftFaucet.NetworkPlugins.Polygon;
 using NftFaucet.NetworkPlugins.Solana;
+using NftFaucet.NetworkPlugins.Base;
+using NftFaucet.NetworkPlugins.Linea;
+using NftFaucet.NetworkPlugins.StatusNetwork;
 using NftFaucet.Plugins;
 using NftFaucet.WalletPlugins.Keygens;
 using NftFaucet.WalletPlugins.Metamask;
@@ -29,6 +32,9 @@ public class PluginLoader
         new ArbitrumNetworkPlugin(),
         new AvalancheNetworkPlugin(),
         new SolanaNetworkPlugin(),
+        new BaseNetworkPlugin(),
+        new LineaNetworkPlugin(),
+        new StatusNetworkPlugin(),
     };
 
     public IReadOnlyCollection<IWalletPlugin> WalletPlugins { get; } = new IWalletPlugin[]
