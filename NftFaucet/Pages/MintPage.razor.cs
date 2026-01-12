@@ -14,7 +14,7 @@ public partial class MintPage : BasicComponent
                                   AppState.SelectedWallet.IsConfigured &&
                                   AppState.SelectedContract != null &&
                                   AppState.SelectedToken != null &&
-                                  AppState.SelectedUploadLocation != null &&
+                                  !string.IsNullOrEmpty(AppState.SelectedToken.Location) &&
                                   AppState.UserStorage.DestinationAddress != null;
 
     protected override async Task OnInitializedAsync()

@@ -115,13 +115,13 @@ public sealed class EthereumKeygenWallet : Wallet
                 ContractType.Erc721 => new Erc721MintFunction
                 {
                     To = mintRequest.DestinationAddress,
-                    Uri = mintRequest.UploadLocation.Location,
+                    Uri = mintRequest.Token.Location,
                 },
                 ContractType.Erc1155 => new Erc1155MintFunction
                 {
                     To = mintRequest.DestinationAddress,
                     Amount = mintRequest.TokensAmount,
-                    Uri = mintRequest.UploadLocation.Location,
+                    Uri = mintRequest.Token.Location,
                 },
                 _ => throw new ArgumentOutOfRangeException(),
             };

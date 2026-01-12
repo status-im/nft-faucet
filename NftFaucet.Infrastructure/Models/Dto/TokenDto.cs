@@ -14,4 +14,6 @@ public class TokenDto
     public string CoverFileType { get; set; }
     public string CoverFileData { get; set; }
     public long? CoverFileSize { get; set; }
+    public Guid? ImporterId { get; set; }
+    public string Location { get; set; }
 }

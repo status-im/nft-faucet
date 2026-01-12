@@ -7,7 +7,6 @@ public class AppStateDto
     public Guid? SelectedWallet { get; set; }
     public Guid? SelectedContract { get; set; }
     public Guid? SelectedToken { get; set; }
-    public Guid? SelectedUploadLocation { get; set; }
     public string DestinationAddress { get; set; }
     public int? TokenAmount { get; set; }
 }

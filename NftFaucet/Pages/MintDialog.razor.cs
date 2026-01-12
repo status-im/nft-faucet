@@ -123,7 +123,7 @@ public partial class MintDialog : BasicComponent
         var sendTransactionResult = await ResultWrapper.Wrap(async () =>
         {
             var mintRequest = new MintRequest(AppState.SelectedNetwork, AppState.SelectedWallet,
-                AppState.SelectedContract, AppState.SelectedToken, AppState.SelectedUploadLocation,
+                AppState.SelectedContract, AppState.SelectedToken,
                 AppState.UserStorage.DestinationAddress, AppState.UserStorage.TokenAmount);
             var task1 = AppState.SelectedWallet.Mint(mintRequest);
             var task2 = Task.Delay(TimeSpan.FromMilliseconds(MinDelayInMilliseconds));

@@ -134,7 +134,7 @@ public class SolanaKeygenWallet : Wallet
         {
             name = mintRequest.Token.Name,
             symbol = "SNFT",
-            uri = mintRequest.UploadLocation.Location,
+            uri = mintRequest.Token.Location,
             creators = new List<Creator> { new Creator(wallet.Account.PublicKey, 100, true) },
             sellerFeeBasisPoints = 982,
         };

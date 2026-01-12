@@ -53,17 +53,6 @@
             @:<text style="color: green;">OK</text>
         }
     </p>
-    <p>
-        <text style="font-weight: bold;">Upload location: </text>
-        @if (AppState?.SelectedUploadLocation == null)
-        {
-            @:<text style="color: red;">NOT SELECTED</text>
-        }
-        else
-        {
-            @:<text style="color: green;">OK</text>
-        }
-    </p>
     @if (IsReadyToMint)
     {
         <div class="mb-4">

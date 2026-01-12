@@ -8,6 +8,5 @@ public record MintRequest(
     IWallet Wallet,
     IContract Contract,
     IToken Token,
-    ITokenUploadLocation UploadLocation,
     string DestinationAddress,
     int TokensAmount);

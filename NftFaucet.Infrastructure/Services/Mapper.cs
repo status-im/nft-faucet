@@ -14,7 +14,6 @@ public class Mapper
             SelectedWallet = appState.SelectedWallet?.Id,
             SelectedContract = appState.SelectedContract?.Id,
             SelectedToken = appState.SelectedToken?.Id,
-            SelectedUploadLocation = appState.SelectedUploadLocation?.Id,
             DestinationAddress = appState.UserStorage?.DestinationAddress,
             TokenAmount = appState.UserStorage?.TokenAmount,
         };
@@ -34,17 +33,8 @@ public class Mapper
             CoverFileType = token.CoverFile?.FileType,
             CoverFileData = token.CoverFile?.FileData,
             CoverFileSize = token.CoverFile?.FileSize,
-        };
-
-    public UploadLocationDto ToDto(ITokenUploadLocation uploadLocation)
-        => uploadLocation == null ? null : new UploadLocationDto
-        {
-            Id = uploadLocation.Id,
-            TokenId = uploadLocation.TokenId,
-            Name = uploadLocation.Name,
-            Location = uploadLocation.Location,
-            CreatedAt = uploadLocation.CreatedAt,
-            UploaderId = uploadLocation.UploaderId,
+            ImporterId = token.ImporterId,
+            Location = token.Location,
         };
 
     public ScopedAppState ToDomain(AppStateDto appStateDto)
@@ -56,7 +46,6 @@ public class Mapper
                 SelectedWallets = ToGuidArray(appStateDto.SelectedWallet),
                 SelectedContracts = ToGuidArray(appStateDto.SelectedContract),
                 SelectedTokens = ToGuidArray(appStateDto.SelectedToken),
-                SelectedUploadLocations = ToGuidArray(appStateDto.SelectedUploadLocation),
                 DestinationAddress = appStateDto.DestinationAddress,
                 TokenAmount = appStateDto.TokenAmount ?? 1,
             }
@@ -83,17 +72,8 @@ public class Mapper
                 FileData = tokenDto.CoverFileData,
                 FileSize = tokenDto.CoverFileSize ?? 0,
             },
-        };
-
-    public ITokenUploadLocation ToDomain(UploadLocationDto uploadLocationDto)
-        => uploadLocationDto == null ? null : new TokenUploadLocation
-        {
-            Id = uploadLocationDto.Id,
-            TokenId = uploadLocationDto.TokenId,
-            Name = uploadLocationDto.Name,
-            Location = uploadLocationDto.Location,
-            CreatedAt = uploadLocationDto.CreatedAt,
-            UploaderId = uploadLocationDto.UploaderId,
+            ImporterId = tokenDto.ImporterId,
+            Location = tokenDto.Location,
         };
 
     private Guid[] ToGuidArray(Guid? guid) => guid == null ? Array.Empty<Guid>() : new[] {guid.Value};

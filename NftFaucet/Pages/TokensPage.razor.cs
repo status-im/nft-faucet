@@ -31,6 +31,18 @@ public partial class TokensPage : BasicComponent
                 Value = token.Description,
             },
         };
+
+        // Add TokenURI info if available
+        if (!string.IsNullOrEmpty(token.Location))
+        {
+            properties.Add(new CardListItemProperty
+            {
+                Name = "TokenURI",
+                Value = token.Location.Length > 50 ? token.Location.Substring(0, 47) + "..." : token.Location,
+                Link = token.Location,
+            });
+        }
+
         properties.Add(new CardListItemProperty
         {
             Name = token.CoverFile == null ? "Size" : "MF Size",
@@ -75,7 +87,6 @@ public partial class TokensPage : BasicComponent
         AppState.UserStorage.Tokens ??= new List<IToken>();
         AppState.UserStorage.Tokens.Add(token);
         AppState.UserStorage.SelectedTokens = new[] { token.Id };
-        AppState.UserStorage.SelectedUploadLocations = Array.Empty<Guid>();
         RefreshCards();
         RefreshMediator.NotifyStateHasChangedSafe();
         await StateRepository.SaveToken(token);
@@ -96,7 +107,6 @@ public partial class TokensPage : BasicComponent
         AppState.UserStorage.Tokens ??= new List<IToken>();
         AppState.UserStorage.Tokens.Add(token);
         AppState.UserStorage.SelectedTokens = new[] { token.Id };
-        AppState.UserStorage.SelectedUploadLocations = Array.Empty<Guid>();
         RefreshCards();
         RefreshMediator.NotifyStateHasChangedSafe();
         await StateRepository.SaveToken(token);
@@ -105,21 +115,12 @@ public partial class TokensPage : BasicComponent
 
     private async Task OnTokenChange()
     {
-        AppState.UserStorage.SelectedUploadLocations = Array.Empty<Guid>();
         await SaveAppState();
     }
 
     private async Task DeleteToken(IToken token)
     {
-        var tokenLocations = AppState?.UserStorage?.UploadLocations?.Where(x => x.TokenId == token.Id).ToArray() ?? Array.Empty<ITokenUploadLocation>();
-        foreach (var tokenUploadLocation in tokenLocations)
-        {
-            await StateRepository.DeleteTokenLocation(tokenUploadLocation.Id);
-        }
-
         await StateRepository.DeleteToken(token.Id);
-
-        AppState!.UserStorage!.UploadLocations = AppState.UserStorage.UploadLocations!.Except(tokenLocations).ToList();
         AppState!.UserStorage!.Tokens = AppState.UserStorage.Tokens!.Where(x => x.Id != token.Id).ToList();
         RefreshCards();
         RefreshMediator.NotifyStateHasChangedSafe();

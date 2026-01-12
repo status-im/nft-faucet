@@ -40,7 +40,7 @@ builder.Services.AddMetaMaskBlazor();
 builder.Services.AddIndexedDB(dbStore =>
 {
     dbStore.DbName = "NftFaucetV2";
-    dbStore.Version = 1;
+    dbStore.Version = 3;
 
     dbStore.Stores.Add(new StoreSchema
     {
@@ -52,7 +52,6 @@ builder.Services.AddIndexedDB(dbStore =>
             new IndexSpec {Name = "selectedWallet", KeyPath = "selectedWallet", Auto = false},
             new IndexSpec {Name = "selectedContract", KeyPath = "selectedContract", Auto = false},
             new IndexSpec {Name = "selectedToken", KeyPath = "selectedToken", Auto = false},
-            new IndexSpec {Name = "selectedUploadLocation", KeyPath = "selectedUploadLocation", Auto = false},
             new IndexSpec {Name = "destinationAddress", KeyPath = "destinationAddress", Auto = false},
             new IndexSpec {Name = "tokenAmount", KeyPath = "tokenAmount", Auto = false},
         }
@@ -75,20 +74,8 @@ builder.Services.AddIndexedDB(dbStore =>
             new IndexSpec {Name = "coverFileType", KeyPath = "coverFileType", Auto = false},
             new IndexSpec {Name = "coverFileData", KeyPath = "coverFileData", Auto = false},
             new IndexSpec {Name = "coverFileSize", KeyPath = "coverFileSize", Auto = false},
-        }
-    });
-
-    dbStore.Stores.Add(new StoreSchema
-    {
-        Name = "UploadLocations",
-        PrimaryKey = new IndexSpec { Name = "id", KeyPath = "id", Auto = true },
-        Indexes = new List<IndexSpec>
-        {
-            new IndexSpec {Name = "tokenId", KeyPath = "tokenId", Auto = false},
-            new IndexSpec {Name = "name", KeyPath = "name", Auto = false},
+            new IndexSpec {Name = "importerId", KeyPath = "importerId", Auto = false},
             new IndexSpec {Name = "location", KeyPath = "location", Auto = false},
-            new IndexSpec {Name = "createdAt", KeyPath = "createdAt", Auto = false},
-            new IndexSpec {Name = "uploaderId", KeyPath = "uploaderId", Auto = false},
         }
     });
 
