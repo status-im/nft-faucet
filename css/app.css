@@ -120,3 +120,40 @@ a, .btn-link {
     left:8px;
     top:12px;
 }
+
+/* Radzen Dialog Fixes for v8.x */
+
+/* Fix dialog overlay - prevent gray shade from covering the dialog itself */
+.rz-dialog-wrapper {
+    background-color: transparent !important;
+}
+
+.rz-dialog-mask {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    z-index: 1000 !important;
+}
+
+.rz-dialog {
+    background-color: white !important;
+    z-index: 1001 !important;
+}
+
+/* Fix dialog header alignment - keep title and close button on same line */
+.rz-dialog-title-bar {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: nowrap !important;
+}
+
+.rz-dialog-title {
+    flex: 1 1 auto !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+.rz-dialog-title-bar-icon {
+    flex: 0 0 auto !important;
+    margin-left: auto !important;
+}
