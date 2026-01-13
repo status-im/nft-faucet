@@ -7,7 +7,7 @@ using NftFaucet.Domain.Utils;
 using NftFaucet.Plugins.Models;
 using NftFaucet.Plugins.Models.Abstraction;
 using NftFaucet.Plugins.Models.Enums;
-using Solana.Metaplex;
+using Solnet.Metaplex.NFT.Library;
 using Solnet.Programs;
 using Solnet.Rpc;
 using Solnet.Rpc.Builders;
@@ -130,7 +130,7 @@ public class SolanaKeygenWallet : Wallet
         var masterEditionAddress = GetMasterEditionAddress(mint.PublicKey);
 
         // TOKEN METADATA
-        var data = new MetadataParameters()
+        var data = new Metadata()
         {
             name = mintRequest.Token.Name,
             symbol = "SNFT",
@@ -155,6 +155,7 @@ public class SolanaKeygenWallet : Wallet
             walletAddress,
             walletAddress,
             data,
+            TokenStandard.NonFungible,
             true,
             false
         ));
@@ -215,7 +216,7 @@ public class SolanaKeygenWallet : Wallet
     private PublicKey GetMetadataAddress(PublicKey mintAddress)
     {
         // PDA METADATA
-        AddressExtensions.TryFindProgramAddress(
+        PublicKey.TryFindProgramAddress(
             new List<byte[]>() {
                 Encoding.UTF8.GetBytes("metadata"),
                 MetadataProgram.ProgramIdKey,
@@ -225,7 +226,7 @@ public class SolanaKeygenWallet : Wallet
             out var metadataAddressBytes,
             out _
         );
-        var metadataAddress = new PublicKey(metadataAddressBytes);
+        var metadataAddress = new PublicKey((byte[])metadataAddressBytes);
 
         return metadataAddress;
     }
@@ -233,7 +234,7 @@ public class SolanaKeygenWallet : Wallet
     private PublicKey GetMasterEditionAddress(PublicKey mintAddress)
     {
         // PDA MASTER EDITION
-        AddressExtensions.TryFindProgramAddress(
+        PublicKey.TryFindProgramAddress(
             new List<byte[]>() {
                 Encoding.UTF8.GetBytes("metadata"),
                 MetadataProgram.ProgramIdKey,
@@ -244,7 +245,7 @@ public class SolanaKeygenWallet : Wallet
             out var masterEditionAddressBytes,
             out _
         );
-        var masterEditionAddress = new PublicKey(masterEditionAddressBytes);
+        var masterEditionAddress = new PublicKey((byte[])masterEditionAddressBytes);
 
         return masterEditionAddress;
     }
