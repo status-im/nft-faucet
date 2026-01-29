@@ -10,6 +10,14 @@ using NftFaucet.NetworkPlugins.Solana;
 using NftFaucet.NetworkPlugins.Base;
 using NftFaucet.NetworkPlugins.Linea;
 using NftFaucet.NetworkPlugins.StatusNetwork;
+using NftFaucet.NetworkPlugins.Unichain;
+using NftFaucet.NetworkPlugins.Ink;
+using NftFaucet.NetworkPlugins.PolygonZkEvm;
+using NftFaucet.NetworkPlugins.Katana;
+using NftFaucet.NetworkPlugins.Abstract;
+using NftFaucet.NetworkPlugins.ZkSync;
+using NftFaucet.NetworkPlugins.Soneium;
+using NftFaucet.NetworkPlugins.Scroll;
 using NftFaucet.Plugins;
 using NftFaucet.WalletPlugins.Keygens;
 using NftFaucet.WalletPlugins.Metamask;
@@ -35,6 +43,14 @@ public class PluginLoader
         new BaseNetworkPlugin(),
         new LineaNetworkPlugin(),
         new StatusNetworkPlugin(),
+        new UnichainNetworkPlugin(),
+        new InkNetworkPlugin(),
+        new PolygonZkEvmNetworkPlugin(),
+        new KatanaNetworkPlugin(),
+        new AbstractNetworkPlugin(),
+        new ZkSyncNetworkPlugin(),
+        new SoneiumNetworkPlugin(),
+        new ScrollNetworkPlugin(),
     };
 
     public IReadOnlyCollection<IWalletPlugin> WalletPlugins { get; } = new IWalletPlugin[]

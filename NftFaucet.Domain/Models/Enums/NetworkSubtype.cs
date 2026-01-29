@@ -13,4 +13,12 @@ public enum NetworkSubtype
     Base,
     StatusNetwork,
     Linea,
+    Unichain,
+    Ink,
+    PolygonZkEvm,
+    Katana,
+    Abstract,
+    ZkSync,
+    Soneium,
+    Scroll,
 }
