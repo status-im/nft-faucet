@@ -34,6 +34,14 @@
       <ProjectReference Include="..\plugins\network-plugins\NftFaucet.NetworkPlugins.Base\NftFaucet.NetworkPlugins.Base.csproj" />
       <ProjectReference Include="..\plugins\network-plugins\NftFaucet.NetworkPlugins.Linea\NftFaucet.NetworkPlugins.Linea.csproj" />
       <ProjectReference Include="..\plugins\network-plugins\NftFaucet.NetworkPlugins.StatusNetwork\NftFaucet.NetworkPlugins.StatusNetwork.csproj" />
+      <ProjectReference Include="..\plugins\network-plugins\NftFaucet.NetworkPlugins.Unichain\NftFaucet.NetworkPlugins.Unichain.csproj" />
+      <ProjectReference Include="..\plugins\network-plugins\NftFaucet.NetworkPlugins.Ink\NftFaucet.NetworkPlugins.Ink.csproj" />
+      <ProjectReference Include="..\plugins\network-plugins\NftFaucet.NetworkPlugins.PolygonZkEvm\NftFaucet.NetworkPlugins.PolygonZkEvm.csproj" />
+      <ProjectReference Include="..\plugins\network-plugins\NftFaucet.NetworkPlugins.Katana\NftFaucet.NetworkPlugins.Katana.csproj" />
+      <ProjectReference Include="..\plugins\network-plugins\NftFaucet.NetworkPlugins.Abstract\NftFaucet.NetworkPlugins.Abstract.csproj" />
+      <ProjectReference Include="..\plugins\network-plugins\NftFaucet.NetworkPlugins.ZkSync\NftFaucet.NetworkPlugins.ZkSync.csproj" />
+      <ProjectReference Include="..\plugins\network-plugins\NftFaucet.NetworkPlugins.Soneium\NftFaucet.NetworkPlugins.Soneium.csproj" />
+      <ProjectReference Include="..\plugins\network-plugins\NftFaucet.NetworkPlugins.Scroll\NftFaucet.NetworkPlugins.Scroll.csproj" />
       <ProjectReference Include="..\plugins\wallet-plugins\NftFaucet.WalletPlugins.Keygens\NftFaucet.WalletPlugins.Keygens.csproj" />
       <ProjectReference Include="..\plugins\wallet-plugins\NftFaucet.WalletPlugins.Metamask\NftFaucet.WalletPlugins.Metamask.csproj" />
       <ProjectReference Include="..\plugins\wallet-plugins\NftFaucet.WalletPlugins.Phantom\NftFaucet.WalletPlugins.Phantom.csproj" />
